@@ -18,6 +18,14 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>{title}</title>
 
+    <!-- Prevent H1UserAgentFontSizeInSection deprecation warning -->
+    <style>
+      :where(h1) {
+        margin-block: 0.67em;
+        font-size: 2em;
+      }
+    </style>
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="profile" />
     <meta property="og:url" content={Astro.url} />
