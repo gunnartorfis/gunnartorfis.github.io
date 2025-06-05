@@ -1,0 +1,39 @@
+---
+import Badge from "@/components/ui/badge.astro";
+import Section from "@/components/ui/section.astro";
+import { RESUME_DATA } from "@/data/resume-data";
+import { cn } from "@/lib/utils";
+
+type Skills = readonly string[];
+
+interface Props {
+  skills: Skills;
+  className?: string;
+}
+
+const { skills = [], className } = Astro.props;
+
+// If no skills, don't render anything
+if (skills.length === 0) {
+  return null;
+}
+---
+
+<Section className={className}>
+  <h2 class="text-2xl text-blue-900 font-bold" id="skills-section">Skills</h2>
+  <ul
+    class={cn("flex list-none flex-wrap gap-1 p-0")}
+    aria-label="List of skills"
+    aria-labelledby="skills-section"
+  >
+    {
+      skills.map((skill) => (
+        <li>
+          <Badge className="print:text-[10px]" aria-label={`Skill: ${skill}`}>
+            {skill}
+          </Badge>
+        </li>
+      ))
+    }
+  </ul>
+</Section>

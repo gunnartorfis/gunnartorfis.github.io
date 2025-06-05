@@ -1,0 +1,20 @@
+---
+import { RESUME_DATA } from "@/data/resume-data";
+import Section from "@/components/ui/section.astro";
+
+interface Props {
+  summary: typeof RESUME_DATA.summary;
+  className?: string;
+}
+
+const { summary, className } = Astro.props;
+---
+
+<Section className={className}>
+  <h2 class="text-2xl text-blue-900 font-bold" id="about-section">About</h2>
+  <div
+    class="text-pretty font-mono text-sm leading-6 print:text-[12px]"
+    aria-labelledby="about-section"
+    set:html={summary}
+  />
+</Section>

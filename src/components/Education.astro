@@ -1,0 +1,53 @@
+---
+import Card from "@/components/ui/card.astro";
+import CardHeader from "@/components/ui/card-header.astro";
+import CardContent from "@/components/ui/card-content.astro";
+import Section from "@/components/ui/section.astro";
+import { RESUME_DATA } from "@/data/resume-data";
+
+type Education = (typeof RESUME_DATA)["education"][number];
+
+interface Props {
+  education: readonly Education[];
+}
+
+const { education } = Astro.props;
+---
+
+<Section>
+  <h2 class="text-2xl text-blue-900 font-bold" id="education-section">
+    Education
+  </h2>
+  <div class="space-y-4" role="feed" aria-labelledby="education-section">
+    {
+      education.map((item) => (
+        <article role="article">
+          <Card>
+            <CardHeader>
+              <div class="flex items-center justify-between gap-x-2 text-base">
+                <h3
+                  class="font-semibold leading-none"
+                  id={`education-${item.school.toLowerCase().replace(/\s+/g, "-")}`}
+                >
+                  {item.school}
+                </h3>
+                <div
+                  class="text-sm tabular-nums text-gray-500"
+                  aria-label={`Period: ${item.start} to ${item.end}`}
+                >
+                  {item.start} - {item.end}
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent
+              className="mt-2 print:text-[12px]"
+              aria-labelledby={`education-${item.school.toLowerCase().replace(/\s+/g, "-")}`}
+            >
+              {item.degree}
+            </CardContent>
+          </Card>
+        </article>
+      ))
+    }
+  </div>
+</Section>

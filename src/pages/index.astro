@@ -1,35 +1,12 @@
 ---
-import { CommandMenu } from "@/components/command-menu";
 import { RESUME_DATA } from "@/data/resume-data";
-import { WorkExperience } from "@/components/WorkExperience";
-import { Projects } from "@/components/Projects";
-import { Education } from "@/components/Education";
-import { Summary } from "@/components/Summary";
-import { Skills } from "@/components/Skills";
-import OptimizedHeader from "@/components/OptimizedHeader.astro";
+import WorkExperience from "@/components/WorkExperience.astro";
+import Projects from "@/components/Projects.astro";
+import Education from "@/components/Education.astro";
+import Summary from "@/components/Summary.astro";
+import Skills from "@/components/Skills.astro";
+import Header from "@/components/Header.astro";
 import Layout from "../layouts/Layout.astro";
-
-/**
- * Transform social links for command menu
- */
-function getCommandMenuLinks() {
-  const links = [];
-
-  if (RESUME_DATA.personalWebsiteUrl) {
-    links.push({
-      url: RESUME_DATA.personalWebsiteUrl,
-      title: "Personal Website",
-    });
-  }
-
-  return [
-    ...links,
-    ...RESUME_DATA.contact.social.map((socialMediaLink) => ({
-      url: socialMediaLink.url,
-      title: socialMediaLink.name,
-    })),
-  ];
-}
 
 export const prerender = true;
 ---
@@ -47,9 +24,9 @@ export const prerender = true;
       class="mx-auto w-full max-w-2xl space-y-8 bg-white print:space-y-4"
       aria-label="Resume Content"
     >
-      <OptimizedHeader />
+      <Header />
 
-      <div class="space-y-8 print:space-y-4">
+      <div class="space-y-20 print:space-y-4">
         <Summary summary={RESUME_DATA.summary} />
 
         <WorkExperience work={RESUME_DATA.work} />
@@ -61,9 +38,5 @@ export const prerender = true;
         <Skills skills={[]} />
       </div>
     </section>
-
-    <nav class="print:hidden" aria-label="Quick navigation">
-      <CommandMenu links={getCommandMenuLinks()} />
-    </nav>
   </main>
 </Layout>

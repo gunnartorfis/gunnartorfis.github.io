@@ -1,0 +1,97 @@
+---
+import Badge from "@/components/ui/badge.astro";
+import Card from "@/components/ui/card.astro";
+import CardHeader from "@/components/ui/card-header.astro";
+import CardTitle from "@/components/ui/card-title.astro";
+import CardDescription from "@/components/ui/card-description.astro";
+import CardContent from "@/components/ui/card-content.astro";
+import Section from "@/components/ui/section.astro";
+import { RESUME_DATA } from "@/data/resume-data";
+
+interface Props {
+  projects: (typeof RESUME_DATA)["projects"];
+}
+
+const { projects } = Astro.props;
+---
+
+<Section
+  className="print-force-new-page scroll-mb-16 print:space-y-4 print:pt-12"
+>
+  <h2 class="text-2xl text-blue-900 font-bold" id="side-projects">
+    Open source
+  </h2>
+  <div
+    class="flex flex-wrap gap-3 print:gap-2"
+    role="feed"
+    aria-labelledby="side-projects"
+  >
+    {
+      projects.map((project) => (
+        <article class="h-full">
+          <Card className="flex h-full flex-col overflow-hidden border p-3">
+            <CardHeader>
+              <div class="space-y-1">
+                <CardTitle className="text-base">
+                  {project.link ? (
+                    <>
+                      <a
+                        href={project.link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1 hover:underline"
+                        aria-label={`${project.title} project (opens in new tab)`}
+                      >
+                        {project.title}
+                        <span
+                          class="size-1 rounded-full bg-green-500"
+                          aria-label="Active project indicator"
+                        />
+                      </a>
+                      <div
+                        class="hidden font-mono text-xs underline print:visible"
+                        aria-hidden="true"
+                      >
+                        {project.link.href
+                          .replace("https://", "")
+                          .replace("www.", "")
+                          .replace("/", "")}
+                      </div>
+                    </>
+                  ) : (
+                    <span>{project.title}</span>
+                  )}
+                </CardTitle>
+                <CardDescription
+                  className="text-pretty font-mono text-xs leading-5 print:text-[10px]"
+                  aria-label="Project description"
+                >
+                  {project.description}
+                </CardDescription>
+              </div>
+            </CardHeader>
+            <CardContent className="mt-auto flex">
+              {project.techStack.length > 0 && (
+                <ul
+                  class="mt-2 flex list-none flex-wrap gap-1 p-0"
+                  aria-label="Technologies used"
+                >
+                  {project.techStack.map((tag) => (
+                    <li>
+                      <Badge
+                        className="px-1 py-0 text-[10px] print:px-1 print:py-0.5 print:text-[8px] print:leading-tight"
+                        variant="secondary"
+                      >
+                        {tag}
+                      </Badge>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </CardContent>
+          </Card>
+        </article>
+      ))
+    }
+  </div>
+</Section>

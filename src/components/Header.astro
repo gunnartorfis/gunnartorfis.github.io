@@ -1,0 +1,164 @@
+---
+import Avatar from "@/components/ui/avatar.astro";
+import AvatarImage from "@/components/ui/avatar-image.astro";
+import Button from "@/components/ui/button.astro";
+import GlobeIcon from "@/components/icons/GlobeIcon.astro";
+import MailIcon from "@/components/icons/MailIcon.astro";
+import PhoneIcon from "@/components/icons/PhoneIcon.astro";
+import GitHubIcon from "@/components/icons/GitHubIcon.astro";
+import LinkedInIcon from "@/components/icons/LinkedInIcon.astro";
+import XIcon from "@/components/icons/XIcon.astro";
+import { RESUME_DATA } from "@/data/resume-data";
+
+// Since Astro doesn't support dynamic components like React,
+// we'll handle this in the template
+---
+
+<header class="flex justify-between">
+  <div class="flex-1 space-y-1.5">
+    <h1 class="text-2xl font-bold" id="resume-name">
+      {RESUME_DATA.name}
+    </h1>
+    <p
+      class="max-w-md font-mono text-sm text-pretty print:text-[12px]"
+      aria-labelledby="resume-name"
+    >
+      {RESUME_DATA.about}
+    </p>
+
+    <p
+      class="text-foreground max-w-md items-center font-mono text-xs text-pretty"
+    >
+      <a
+        class="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
+        href={RESUME_DATA.locationLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Location: ${RESUME_DATA.location}`}
+      >
+        <GlobeIcon class="size-3" aria-hidden="true" />
+        {RESUME_DATA.location}
+      </a>
+    </p>
+
+    <div
+      class="flex gap-x-1 pt-1 font-mono text-sm print:hidden"
+      role="list"
+      aria-label="Contact links"
+    >
+      {
+        RESUME_DATA.personalWebsiteUrl && (
+          <Button className="size-8" variant="outline" size="icon">
+            <a
+              href={RESUME_DATA.personalWebsiteUrl}
+              aria-label="Personal website"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GlobeIcon class="size-4" aria-hidden="true" />
+            </a>
+          </Button>
+        )
+      }
+      {
+        RESUME_DATA.contact.email && (
+          <Button className="size-8" variant="outline" size="icon">
+            <a
+              href={`mailto:${RESUME_DATA.contact.email}`}
+              aria-label="Email"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MailIcon class="size-4" aria-hidden="true" />
+            </a>
+          </Button>
+        )
+      }
+      {
+        RESUME_DATA.contact.tel && (
+          <Button className="size-8" variant="outline" size="icon">
+            <a
+              href={`tel:${RESUME_DATA.contact.tel}`}
+              aria-label="Phone"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <PhoneIcon class="size-4" aria-hidden="true" />
+            </a>
+          </Button>
+        )
+      }
+      {
+        RESUME_DATA.contact.social.map((social) => (
+          <Button className="size-8" variant="outline" size="icon">
+            <a
+              href={social.url}
+              aria-label={social.name}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {social.icon === "GitHub" && (
+                <GitHubIcon class="size-4" aria-hidden="true" />
+              )}
+              {social.icon === "LinkedIn" && (
+                <LinkedInIcon class="size-4" aria-hidden="true" />
+              )}
+              {social.icon === "X" && (
+                <XIcon class="size-4" aria-hidden="true" />
+              )}
+            </a>
+          </Button>
+        ))
+      }
+    </div>
+
+    <div
+      class="hidden gap-x-2 font-mono text-sm print:flex print:text-[12px]"
+      aria-label="Print contact information"
+    >
+      {
+        RESUME_DATA.personalWebsiteUrl && (
+          <>
+            <a
+              class="hover:text-foreground/70 underline"
+              href={RESUME_DATA.personalWebsiteUrl}
+            >
+              {new URL(RESUME_DATA.personalWebsiteUrl).hostname}
+            </a>
+            <span aria-hidden="true">/</span>
+          </>
+        )
+      }
+      {
+        RESUME_DATA.contact.email && (
+          <>
+            <a
+              class="hover:text-foreground/70 underline"
+              href={`mailto:${RESUME_DATA.contact.email}`}
+            >
+              {RESUME_DATA.contact.email}
+            </a>
+            <span aria-hidden="true">/</span>
+          </>
+        )
+      }
+      {
+        RESUME_DATA.contact.tel && (
+          <a
+            class="hover:text-foreground/70 underline"
+            href={`tel:${RESUME_DATA.contact.tel}`}
+          >
+            {RESUME_DATA.contact.tel}
+          </a>
+        )
+      }
+    </div>
+  </div>
+
+  <Avatar className="size-28" aria-hidden="true">
+    <AvatarImage
+      src={RESUME_DATA.avatarUrl}
+      alt={`${RESUME_DATA.name}'s profile picture`}
+    />
+  </Avatar>
+</header>

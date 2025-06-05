@@ -1,12 +1,10 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
-import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
+  integrations: [],
   // image: {
   //   domains: ["avatars.githubusercontent.com"],
   // },
@@ -14,9 +12,6 @@ export default defineConfig({
     remotePatterns: [{ protocol: "https" }],
   },
   output: "static",
-  adapter: vercel({
-    webAnalytics: { enabled: true },
-  }),
   vite: {
     resolve: {
       alias: {
