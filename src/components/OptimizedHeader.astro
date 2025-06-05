@@ -1,0 +1,16 @@
+---
+import { getImage } from "astro:assets";
+import { Header } from "./Header";
+import { RESUME_DATA } from "@/data/resume-data";
+
+// Generate optimized image for the avatar
+const optimizedAvatar = await getImage({
+  src: RESUME_DATA.avatarUrl,
+  width: 112, // size-28 = 7rem = 112px
+  height: 112,
+  format: "webp",
+  quality: 80,
+});
+---
+
+<Header client:load optimizedAvatarSrc={optimizedAvatar.src} />

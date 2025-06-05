@@ -1,17 +1,17 @@
 "use client";
 
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { PrinterIcon } from "lucide-react";
 import {
   Drawer,
-  DrawerTrigger,
+  DrawerClose,
   DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
   DrawerDescription,
   DrawerFooter,
-  DrawerClose,
-} from "./ui/drawer";
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 export const PrintDrawer = () => {
   return (

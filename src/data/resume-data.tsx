@@ -36,7 +36,7 @@ export const RESUME_DATA = {
       , a port of Sonner for web.
     </>
   ),
-  avatarUrl: "https://avatars.githubusercontent.com/u/5333875?v=4",
+  avatarUrl: "https://avatars.githubusercontent.com/u/5333875?s=400&v=4",
   personalWebsiteUrl: "https://gunnartorfis.github.io/cv",
   contact: {
     email: "gunnartorfis@gmail.com",
