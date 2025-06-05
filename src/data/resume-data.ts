@@ -10,7 +10,6 @@ export const RESUME_DATA = {
 As a co-founder, I've had to wear many hats, from product to engineering, and from SEO to CI/CD. I've also had to learn a lot about the business side of things, working closely with the CEO and the rest of the team.
 
 In later years, I've also been working more and more in open source, making contributions to Expo and other React Native libraries, but mostly by creating <a href="https://github.com/gunnartorfis/sonner-native" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">Sonner Native</a>, a port of Sonner for web.`,
-  avatarUrl: "https://avatars.githubusercontent.com/u/5333875?s=400&v=4",
   personalWebsiteUrl: "https://gunnartorfis.github.io/cv",
   contact: {
     email: "gunnartorfis@gmail.com",

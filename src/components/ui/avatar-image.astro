@@ -1,18 +1,21 @@
 ---
 import { cn } from "@/lib/utils";
+import { Image } from "astro:assets";
 
 interface Props {
   className?: string;
-  src?: string;
+  src: ImageMetadata;
   alt?: string;
 }
 
 const { className, src, alt, ...props } = Astro.props;
 ---
 
-<img
-  class={cn("aspect-square h-full w-full", className)}
+<Image
+  class={cn("aspect-square h-full w-full object-cover", className)}
   src={src}
-  alt={alt}
+  width={224}
+  height={224}
+  alt={alt ?? "Profile picture"}
   {...props}
 />

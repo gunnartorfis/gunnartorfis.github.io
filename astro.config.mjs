@@ -4,13 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://gunnartorfis.github.io",
+  base: "/cv",
   integrations: [],
-  // image: {
-  //   domains: ["avatars.githubusercontent.com"],
-  // },
-  image: {
-    remotePatterns: [{ protocol: "https" }],
-  },
   output: "static",
   vite: {
     resolve: {

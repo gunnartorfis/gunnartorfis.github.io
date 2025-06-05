@@ -1,7 +1,6 @@
 ---
 import Avatar from "@/components/ui/avatar.astro";
 import AvatarImage from "@/components/ui/avatar-image.astro";
-import Button from "@/components/ui/button.astro";
 import GlobeIcon from "@/components/icons/GlobeIcon.astro";
 import MailIcon from "@/components/icons/MailIcon.astro";
 import PhoneIcon from "@/components/icons/PhoneIcon.astro";
@@ -9,12 +8,13 @@ import GitHubIcon from "@/components/icons/GitHubIcon.astro";
 import LinkedInIcon from "@/components/icons/LinkedInIcon.astro";
 import XIcon from "@/components/icons/XIcon.astro";
 import { RESUME_DATA } from "@/data/resume-data";
+import profileImage from "../images/gt-profile.webp";
 
 // Since Astro doesn't support dynamic components like React,
 // we'll handle this in the template
 ---
 
-<header class="flex justify-between">
+<header class="flex flex-col-reverse gap-y-4 lg:flex-row lg:justify-between">
   <div class="flex-1 space-y-1.5">
     <h1 class="text-2xl font-bold" id="resume-name">
       {RESUME_DATA.name}
@@ -41,76 +41,79 @@ import { RESUME_DATA } from "@/data/resume-data";
       </a>
     </p>
 
-    <div
-      class="flex gap-x-1 pt-1 font-mono text-sm print:hidden"
-      role="list"
+    <ul
+      class="flex gap-x-4 pt-1 font-mono text-sm print:hidden"
       aria-label="Contact links"
     >
       {
         RESUME_DATA.personalWebsiteUrl && (
-          <Button className="size-8" variant="outline" size="icon">
+          <li>
             <a
               href={RESUME_DATA.personalWebsiteUrl}
               aria-label="Personal website"
               target="_blank"
               rel="noopener noreferrer"
+              class="inline-flex items-center justify-center size-12 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              <GlobeIcon class="size-4" aria-hidden="true" />
+              <GlobeIcon class="size-5" aria-hidden="true" />
             </a>
-          </Button>
+          </li>
         )
       }
       {
         RESUME_DATA.contact.email && (
-          <Button className="size-8" variant="outline" size="icon">
+          <li>
             <a
               href={`mailto:${RESUME_DATA.contact.email}`}
               aria-label="Email"
               target="_blank"
               rel="noopener noreferrer"
+              class="inline-flex items-center justify-center size-12 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              <MailIcon class="size-4" aria-hidden="true" />
+              <MailIcon class="size-5" aria-hidden="true" />
             </a>
-          </Button>
+          </li>
         )
       }
       {
         RESUME_DATA.contact.tel && (
-          <Button className="size-8" variant="outline" size="icon">
+          <li>
             <a
               href={`tel:${RESUME_DATA.contact.tel}`}
               aria-label="Phone"
               target="_blank"
               rel="noopener noreferrer"
+              class="inline-flex items-center justify-center size-12 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              <PhoneIcon class="size-4" aria-hidden="true" />
+              <PhoneIcon class="size-5" aria-hidden="true" />
             </a>
-          </Button>
+          </li>
         )
       }
       {
         RESUME_DATA.contact.social.map((social) => (
-          <Button className="size-8" variant="outline" size="icon">
+          <li>
             <a
               href={social.url}
               aria-label={social.name}
               target="_blank"
               rel="noopener noreferrer"
+              class="inline-flex items-center justify-center size-12 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               {social.icon === "GitHub" && (
-                <GitHubIcon class="size-4" aria-hidden="true" />
+                <GitHubIcon class="size-5" aria-hidden="true" />
               )}
               {social.icon === "LinkedIn" && (
-                <LinkedInIcon class="size-4" aria-hidden="true" />
+                <LinkedInIcon class="size-5" aria-hidden="true" />
               )}
               {social.icon === "X" && (
-                <XIcon class="size-4" aria-hidden="true" />
+                <XIcon class="size-5" aria-hidden="true" />
               )}
             </a>
-          </Button>
+          </li>
         ))
       }
-    </div>
+    </ul>
 
     <div
       class="hidden gap-x-2 font-mono text-sm print:flex print:text-[12px]"
@@ -157,7 +160,7 @@ import { RESUME_DATA } from "@/data/resume-data";
 
   <Avatar className="size-28" aria-hidden="true">
     <AvatarImage
-      src={RESUME_DATA.avatarUrl}
+      src={profileImage}
       alt={`${RESUME_DATA.name}'s profile picture`}
     />
   </Avatar>
