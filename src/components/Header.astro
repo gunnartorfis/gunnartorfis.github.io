@@ -46,21 +46,6 @@ import profileImage from "../images/gt-profile.webp";
       aria-label="Contact links"
     >
       {
-        RESUME_DATA.personalWebsiteUrl && (
-          <li>
-            <a
-              href={RESUME_DATA.personalWebsiteUrl}
-              aria-label="Personal website"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center justify-center size-12 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              <GlobeIcon class="size-5" aria-hidden="true" />
-            </a>
-          </li>
-        )
-      }
-      {
         RESUME_DATA.contact.email && (
           <li>
             <a
@@ -126,7 +111,7 @@ import profileImage from "../images/gt-profile.webp";
               class="hover:text-foreground/70 underline"
               href={RESUME_DATA.personalWebsiteUrl}
             >
-              {new URL(RESUME_DATA.personalWebsiteUrl).hostname}
+              {new URL(RESUME_DATA.personalWebsiteUrl).hostname} (this CV)
             </a>
             <span aria-hidden="true">/</span>
           </>

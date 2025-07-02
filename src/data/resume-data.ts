@@ -10,6 +10,7 @@ export const RESUME_DATA = {
 As a co-founder, my responsibilities spanned multiple domains including product development, engineering, SEO optimization, DevOps, and CI/CD pipeline management. I've also had to learn a lot about the business side of things, working closely with the CEO and the rest of the team.
 
 In later years, I've also been contributing back to the community by making contributions to Expo and other React Native libraries, primarily through my own library, <a href="https://github.com/gunnartorfis/sonner-native" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">Sonner Native</a>, a React Native port of the popular web toast library Sonner.`,
+  personalWebsiteUrl: "https://gunnartorfis.github.io",
   contact: {
     email: "gunnartorfis@gmail.com",
     tel: "+3548653230",
