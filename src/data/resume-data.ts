@@ -118,4 +118,13 @@ In later years, I've also been contributing back to the community by making cont
       },
     },
   ],
+  testimonials: [
+    {
+      quote:
+        "Gunnar is an excellent React Native developer. Internally we take his feedback on the product to heart - it has led to meaningful improvements in the product. Point being, his thoughts on app development are well worth following.",
+      author: "Expo Team",
+      source: "Expo Blog",
+      link: "https://expo.dev/blog",
+    },
+  ],
 } as const;
