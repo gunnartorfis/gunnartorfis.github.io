@@ -1,0 +1,73 @@
+---
+import Card from "@/components/ui/card.astro";
+import CardHeader from "@/components/ui/card-header.astro";
+import CardContent from "@/components/ui/card-content.astro";
+import Section from "@/components/ui/section.astro";
+import { RESUME_DATA } from "@/data/resume-data";
+
+type Testimonial = (typeof RESUME_DATA)["testimonials"][number];
+
+interface Props {
+  testimonials: (typeof RESUME_DATA)["testimonials"];
+}
+
+const { testimonials } = Astro.props;
+---
+
+<Section>
+  <h2 class="text-2xl text-blue-900 font-bold" id="testimonials">
+    Testimonials
+  </h2>
+  <div
+    class="space-y-4 print:space-y-2"
+    role="feed"
+    aria-labelledby="testimonials"
+  >
+    {
+      testimonials.map((item) => (
+        <article role="article">
+          <Card className="py-1 print:py-0">
+            <CardContent className="pt-4">
+              <blockquote class="relative">
+                <svg
+                  class="absolute -top-2 -left-2 h-8 w-8 text-gray-200 print:h-6 print:w-6"
+                  fill="currentColor"
+                  viewBox="0 0 32 32"
+                  aria-hidden="true"
+                >
+                  <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                </svg>
+                <p class="relative text-lg italic text-gray-700 leading-relaxed pl-6 print:text-sm print:pl-4">
+                  {item.quote}
+                </p>
+              </blockquote>
+              <footer class="mt-4 pl-6 print:pl-4 print:mt-2">
+                <div class="flex items-center gap-2">
+                  <div class="text-sm font-semibold text-gray-900 print:text-xs">
+                    {item.author}
+                  </div>
+                  {item.source && (
+                    <>
+                      <span class="text-gray-400" aria-hidden="true">
+                        •
+                      </span>
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-sm text-gray-600 hover:text-blue-900 hover:underline print:text-xs"
+                        aria-label={`${item.source} website`}
+                      >
+                        {item.source}
+                      </a>
+                    </>
+                  )}
+                </div>
+              </footer>
+            </CardContent>
+          </Card>
+        </article>
+      ))
+    }
+  </div>
+</Section>
