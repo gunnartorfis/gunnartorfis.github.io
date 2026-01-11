@@ -1,0 +1,57 @@
+---
+import Card from "@/components/ui/card.astro";
+import CardHeader from "@/components/ui/card-header.astro";
+import CardContent from "@/components/ui/card-content.astro";
+import CardTitle from "@/components/ui/card-title.astro";
+import CardDescription from "@/components/ui/card-description.astro";
+import Section from "@/components/ui/section.astro";
+import Badge from "@/components/ui/badge.astro";
+import { RESUME_DATA } from "@/data/resume-data";
+
+interface Props {
+  publications: (typeof RESUME_DATA)["publications"];
+}
+
+const { publications } = Astro.props;
+---
+
+<Section>
+  <h2 class="text-2xl text-blue-900 font-bold" id="publications">
+    Publications
+  </h2>
+  <div
+    class="space-y-4 print:space-y-2"
+    role="feed"
+    aria-labelledby="publications"
+  >
+    {
+      publications.map((item) => (
+        <article role="article">
+          <Card className="py-1 print:py-0">
+            <CardHeader>
+              <div class="flex items-center justify-between gap-x-2">
+                <CardTitle>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:underline"
+                    aria-label={`Read ${item.title}`}
+                  >
+                    {item.title}
+                  </a>
+                </CardTitle>
+                <Badge variant="secondary" className="text-nowrap">
+                  {item.publisher}
+                </Badge>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>{item.description}</CardDescription>
+            </CardContent>
+          </Card>
+        </article>
+      ))
+    }
+  </div>
+</Section>

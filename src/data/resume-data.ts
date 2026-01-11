@@ -127,4 +127,12 @@ In later years, I've also been contributing back to the community by making cont
       link: "https://expo.dev/blog",
     },
   ],
+  publications: [
+    {
+      title: "Going Universal: From a brownfield React Native and Next.js stack to one Expo app",
+      publisher: "Expo Blog",
+      description: "How we consolidated our React Native and Next.js applications into a unified Expo app at Noona.",
+      link: "https://expo.dev/blog/from-a-brownfield-react-native-and-next-js-stack-to-one-expo-app",
+    },
+  ],
 } as const;
