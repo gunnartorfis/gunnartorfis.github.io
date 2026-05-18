@@ -54,7 +54,6 @@ In later years, I've also been contributing back to the community by making cont
         "Inngest",
         "RAG",
         "AI Agents",
-        "Remix",
         "Kubernetes",
         "CI/CD",
       ],
