@@ -30,45 +30,24 @@ const { work } = Astro.props;
         <article role="article">
           <Card className="py-1 print:py-0">
             <CardHeader className="print:space-y-1">
-              <div class="flex items-center justify-between gap-x-3 text-base">
-                <h3 class="text-xl font-semibold leading-none whitespace-nowrap print:text-sm">
-                  <a
-                    class="hover:underline"
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${item.company} company website`}
-                  >
-                    {item.company}
-                  </a>
-                </h3>
-                {item.badges.length > 0 && (
-                  <ul
-                    class={cn(
-                      "hidden flex-wrap justify-end gap-1 sm:flex list-none p-0 min-w-0"
-                    )}
-                    aria-label="Technologies used"
-                  >
-                    {item.badges.map((badge) => (
-                      <li>
-                        <Badge
-                          variant="secondary"
-                          className="align-middle text-xs print:px-1 print:py-0.5 print:text-[8px] print:leading-tight"
-                        >
-                          {badge}
-                        </Badge>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
+              <h3 class="text-xl font-semibold leading-none print:text-sm">
+                <a
+                  class="hover:underline"
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${item.company} company website`}
+                >
+                  {item.company}
+                </a>
+              </h3>
 
               <h4 class="mb-0 font-mono text-sm font-semibold print:text-[12px]">
                 {item.title}
               </h4>
 
               <div
-                class="text-sm tabular-nums text-gray-500 mb-2"
+                class="text-sm tabular-nums text-gray-500"
                 aria-label={`Employment period: ${item.start} to ${item.end ?? "Present"}`}
               >
                 {item.start} - {item.end ?? "Present"}
@@ -76,31 +55,29 @@ const { work } = Astro.props;
             </CardHeader>
 
             <CardContent>
+              {item.badges.length > 0 && (
+                <ul
+                  class={cn(
+                    "flex flex-wrap gap-1 list-none p-0 mt-2"
+                  )}
+                  aria-label="Technologies used"
+                >
+                  {item.badges.map((badge) => (
+                    <li>
+                      <Badge
+                        variant="secondary"
+                        className="align-middle text-xs print:px-1 print:py-0.5 print:text-[8px] print:leading-tight"
+                      >
+                        {badge}
+                      </Badge>
+                    </li>
+                  ))}
+                </ul>
+              )}
               <div
                 class="mt-2 print:mt-1 print:text-[10px] text-pretty leading-6"
                 set:html={item.description}
               />
-              {item.badges.length > 0 && (
-                <div class="mt-2">
-                  <ul
-                    class={cn(
-                      "-mx-2 flex-wrap gap-1 sm:hidden inline-flex list-none p-0"
-                    )}
-                    aria-label="Technologies used"
-                  >
-                    {item.badges.map((badge) => (
-                      <li>
-                        <Badge
-                          variant="secondary"
-                          className="align-middle text-xs print:px-1 print:py-0.5 print:text-[8px] print:leading-tight"
-                        >
-                          {badge}
-                        </Badge>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             </CardContent>
           </Card>
         </article>
