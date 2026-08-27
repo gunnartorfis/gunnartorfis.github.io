@@ -121,3 +121,33 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media print {
+  @page {
+    margin: 0.5in;
+  }
+
+  .print-force-new-page {
+    break-before: page;
+  }
+
+  article,
+  section > div > article {
+    break-inside: avoid;
+  }
+
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  ul,
+  li {
+    break-inside: avoid;
+  }
+
+  [role="feed"] > article + article {
+    margin-top: 1rem;
+  }
+}
