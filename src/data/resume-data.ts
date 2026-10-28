@@ -5,7 +5,7 @@ export const RESUME_DATA = {
   locationLink: "https://www.google.com/maps/place/Kópavogur",
   about:
     "Husband, father of two, and a software enthusiast building AI-first workflow platforms, React and React Native apps.",
-  summary: `Steering the technological helm at Noona, I've been instrumental in leveraging React Native to craft innovative mobile experiences for many years. As the former CTO of Noona, I devoted more than seven years to shaping our technology vision and ensuring our native and web apps were at par with the best in the industry.
+  summary: `I am a Tech Lead at Icelandair, where I started in September 2026. Previously, as the CTO of Noona, I devoted more than seven years to shaping our technology vision and building our native and web apps, with a focus on React Native.
 
 As a co-founder, my responsibilities spanned multiple domains including product development, engineering, SEO optimization, DevOps, and CI/CD pipeline management. I've also had to learn a lot about the business side of things, working closely with the CEO and the rest of the team.
 
@@ -44,6 +44,15 @@ In later years, I've also been contributing back to the community by making cont
   ],
   work: [
     {
+      company: "Icelandair",
+      link: "https://www.icelandair.com",
+      badges: [],
+      title: "Tech Lead",
+      start: "September 2026",
+      end: null,
+      description: "",
+    },
+    {
       company: "Noona Labs",
       link: "https://noona.app/hq",
       badges: [
@@ -59,7 +68,7 @@ In later years, I've also been contributing back to the community by making cont
       ],
       title: "Co-Founder, CTO, Tech Lead",
       start: "2018",
-      end: null,
+      end: "2026",
       description: `<p>Most recently, I have been core to building a greenfield <strong>AI-first workflow platform</strong>. I designed and built production-grade AI automations and internal agents from scratch, including customized AI workflows that autonomously assign and fix codebase bugs, and <strong>retrieval-augmented generation (RAG)</strong> systems integrating internal data tools to instantly resolve support inquiries for both staff and customers.</p>
 <br />
 <p>This role let me dive deep into modern AI solution patterns using <strong>Mastra</strong> for LLM backend architectures, <strong>Inngest</strong> for workflows and events, <strong>Tanstack Start</strong>, <strong>Vercel's AI SDK</strong>, and training classification models in <strong>Python</strong>. I am confident in selecting the right models, designing robust prompting strategies, and implementing guardrails to keep AI workflows stable, secure, and performant. The frontend handles streaming with server-sent events and is built as a highly interactive offline-first application.</p>
