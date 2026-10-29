@@ -10,7 +10,7 @@ const { className, ...props } = Astro.props;
 
 <section
   class={cn(
-    "flex min-h-0 flex-col gap-y-4 print:gap-y-1 leading-6 antialiased font-sans ",
+    "flex min-h-0 flex-col gap-y-4 print:block print:space-y-3 print:[&>h2]:text-xl print:[&>h2]:leading-6 leading-6 antialiased font-sans ",
     className
   )}
   {...props}

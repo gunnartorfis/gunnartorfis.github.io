@@ -14,13 +14,15 @@ import profileImage from "../images/gt-profile.webp";
 // we'll handle this in the template
 ---
 
-<header class="flex flex-col-reverse gap-y-4 lg:flex-row lg:justify-between">
-  <div class="flex-1 space-y-1.5">
+<header
+  class="flex flex-col-reverse gap-y-4 lg:flex-row lg:justify-between print:flex-row print:justify-between print:gap-x-4"
+>
+  <div class="flex-1 space-y-1.5 print:min-w-0">
     <h1 class="text-2xl font-bold" id="resume-name">
       {RESUME_DATA.name}
     </h1>
     <p
-      class="max-w-md font-mono text-sm text-pretty print:text-[12px]"
+      class="max-w-md font-mono text-sm text-pretty print:text-xs print:leading-[18px]"
       aria-labelledby="resume-name"
     >
       {RESUME_DATA.about}
@@ -101,7 +103,7 @@ import profileImage from "../images/gt-profile.webp";
     </ul>
 
     <div
-      class="hidden gap-x-2 font-mono text-sm print:flex print:text-[12px]"
+      class="hidden gap-x-2 font-mono text-sm print:flex print:flex-wrap print:gap-x-1 print:text-[11px] print:leading-[18px]"
       aria-label="Print contact information"
     >
       {

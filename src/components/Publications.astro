@@ -26,11 +26,11 @@ const { publications } = Astro.props;
   >
     {
       publications.map((item) => (
-        <article role="article">
+        <article class="print:break-inside-avoid" role="article">
           <Card className="py-1 print:py-0">
             <CardHeader>
               <div class="flex items-center justify-between gap-x-2">
-                <CardTitle>
+                <CardTitle className="print:text-base print:leading-5">
                   <a
                     href={item.link}
                     target="_blank"
@@ -41,13 +41,18 @@ const { publications } = Astro.props;
                     {item.title}
                   </a>
                 </CardTitle>
-                <Badge variant="secondary" className="text-nowrap">
+                <Badge
+                  variant="secondary"
+                  className="text-nowrap print:text-[10px]"
+                >
                   {item.publisher}
                 </Badge>
               </div>
             </CardHeader>
-            <CardContent>
-              <CardDescription>{item.description}</CardDescription>
+            <CardContent className="mt-2">
+              <CardDescription className="print:text-xs print:leading-[18px]">
+                {item.description}
+              </CardDescription>
             </CardContent>
           </Card>
         </article>

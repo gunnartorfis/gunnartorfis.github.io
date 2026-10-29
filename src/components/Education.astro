@@ -21,10 +21,10 @@ const { education } = Astro.props;
   <div class="space-y-4" role="feed" aria-labelledby="education-section">
     {
       education.map((item) => (
-        <article role="article">
+        <article class="print:break-inside-avoid" role="article">
           <Card>
             <CardHeader>
-              <div class="flex items-center justify-between gap-x-2 text-base">
+              <div class="flex items-center justify-between gap-x-2 text-base print:text-sm">
                 <h3
                   class="font-semibold leading-none"
                   id={`education-${item.school.toLowerCase().replace(/\s+/g, "-")}`}
@@ -32,7 +32,7 @@ const { education } = Astro.props;
                   {item.school}
                 </h3>
                 <div
-                  class="text-sm tabular-nums text-gray-500"
+                  class="text-sm tabular-nums text-gray-500 print:text-xs"
                   aria-label={`Period: ${item.start} to ${item.end}`}
                 >
                   {item.start} - {item.end}
@@ -40,7 +40,7 @@ const { education } = Astro.props;
               </div>
             </CardHeader>
             <CardContent
-              className="mt-2 print:text-[12px]"
+              className="mt-2 print:text-xs print:leading-[18px]"
               aria-labelledby={`education-${item.school.toLowerCase().replace(/\s+/g, "-")}`}
             >
               {item.degree}
